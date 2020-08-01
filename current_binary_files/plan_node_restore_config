@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cp -r plancoind.old .plancoind
+cp -r plancoincli.old .plancoincli
+plancoind start > /dev/null 2>/dev/null &

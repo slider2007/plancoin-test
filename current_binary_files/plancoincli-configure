@@ -1,0 +1,8 @@
+#!/bin/bash
+
+plancoincli config chain-id planmao
+plancoincli config node tcp://localhost:26657
+plancoincli config trust-node true
+plancoincli config output json
+plancoincli config indent true
+
