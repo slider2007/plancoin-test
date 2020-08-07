@@ -23,5 +23,5 @@ If you want to become a validator, please check the docs <https://docs.plancoin-
 * Website: <https://plancoin-crypto.com/en/>
 * Explorer: <https://explorer.plancoin-crypto.com>
 * Docs: <https://docs.plancoin-crypto.com/en/>
-* Telegram channel: <https://t.me/plancoin_lika_world>
+* Telegram channel: <https://t.me/plancoin>
 # plancoin-test
