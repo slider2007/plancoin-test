@@ -1,0 +1,89 @@
+
+
+plancoin
+
+plancoincli keys add overlord
+
+- name: overlord
+  type: local
+  address: plan1hf008ysfgkuc202m0mm6jt6jkkyrlx4507cwyv
+  pubkey: planpub1addwnpepqgfpjnn4k9nctswfp723vuevvyrrvjcpadk0fsagj4jggrx2rjzn6l9xfsn
+  mnemonic: ""
+  threshold: 0
+  pubkeys: []
+
+  
+great prefer asthma rather usage salute hurry witness move pear salmon asthma result farm climb warrior now galaxy drip weasel whale prevent sniff tennis
+
+
+plancoin
+
+
+plancoincli tx send plan1nshyfwj4qmm2s2f5dzt9y7znypf797eph0a5d9 plan1tf8fff3h3uma3rqgm970nwufxuw6f8yt5a8k4f 80000000001plan --from cryptoslonik --fees 100plan --gas auto --gas-adjustment 1.5
+
+plancoincli tx staking create-validator --chain-id plancoin --amount 500000000plan --from "cryptoslonik" --moniker "Zyuzembik" --pubkey planconsopenpub1zcjduepqn8g8qr7p53j4uk4vtlch8elshv4etp6qapshhsjrnkn5ndruyvkqgjn6kx --details "details" --min-self-delegation 100000000 --commission-rate "0.05" --commission-max-rate "0.2" --commission-max-change-rate "0.01" --min-self-delegation 100000000 --chain-id plancoin
+
+plancoincli tx staking create-validator --chain-id plancoin --amount 500000000plan --from "cryptoslonik" --moniker "Zyuzembik" --pubkey $(plancoind tendermint show-validator) --details "details" --min-self-delegation 100000000 --commission-rate "0.05" --commission-max-rate "0.2" --commission-max-change-rate "0.01"
+
+
+
+PS N:\Go\src\plan-master> plancoincli keys add bank_1
+{
+  "name": "bank_1",
+  "type": "local",
+  "address": "plan1myjgnyl8pef5r5whf8rmusu70qnm5s99f8p8c2",
+  "pubkey": "planpub1addwnpepqf47stuk2k2e32sn7q6tqdezrmppjfgzqt2mc3lvmxdvt8mjfhuw5ewj8ru",
+  "mnemonic": "issue seven van tooth mirror side govern raccoon vapor mandate rug cash agree artwork bus slice donate similar estate sail shove whisper squeeze match"
+}
+PS N:\Go\src\plan-master> plancoincli keys add bank_2
+{
+  "name": "bank_2",
+  "type": "local",
+  "address": "plan1n034xpz5lsltxqeumvw6mnk4h5h8kffy8hz23e",
+  "pubkey": "planpub1addwnpepqfwg38nz0wfvvrsnk75g74uuy4xrcgslgmpme4j0a74dgw5w6rj2vverwm0",
+  "mnemonic": "glide sword plug uncover fiber stand avocado diet solar avoid artist firm middle pig unaware crouch turtle sustain same tumble gain craft rookie jaguar"
+}
+
+plancoind init pvlnode --chain-id plancoinlab
+
+# Заменить stake на plan в 2 -х местах
+
+plancoincli config chain-id plancoinlab
+plancoincli config output json
+plancoincli config indent true
+plancoincli config trust-node true
+
+plancoincli keys add bank1
+plancoincli keys add bank2
+
+plancoind add-genesis-account $(plancoincli keys show bank1 -a) 3000000000000plan
+plancoind add-genesis-account $(plancoincli keys show bank2 -a) 3000000000000plan
+
+plancoind gentx --name bank1 --amount 300000000plan --min-self-delegation 300000000
+# plancoind gentx --name bank2 --amount 300000000plan --min-self-delegation 300000000
+
+plancoind collect-gentxs
+plancoind validate-genesis
+plancoind start
+
+# cli start
+plancoincli config chain-id planmao
+plancoincli config trust-node true
+plancoincli config output json
+plancoincli config indent true
+plancoincli rest-server
+
+plancoincli config node tcp://localhost:26657
+
+
+
+# plancoincli query staking params
+plancoind unsafe-reset-all
+
+
+# 2 node start
+plancoind init PVLnode --chain-id planmao
+
+
+
+plancoind export --for-zero-height --height=4000 > export.json
